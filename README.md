@@ -1,6 +1,4 @@
-# api-ddd-clean-architecture
-
-# DDD (Domain-driven Design) - Design dirigido à domínio.
+# DDD (Domain-driven Design).
 
 ## Domínio
 
