@@ -7,7 +7,7 @@ export function makeAnswer(
   override: Partial<AnswerProps> = {},
   id?: UniqueEntityID,
 ) {
-  const question = Answer.create(
+  const answer = Answer.create(
     {
       authorId: new UniqueEntityID(),
       questionId: new UniqueEntityID(),
@@ -17,5 +17,5 @@ export function makeAnswer(
     id,
   )
 
-  return question
+  return answer
 }

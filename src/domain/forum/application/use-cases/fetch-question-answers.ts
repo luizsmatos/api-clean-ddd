@@ -22,10 +22,6 @@ export class FetchQuestionAnswersUseCase {
       { page },
     )
 
-    if (!answers) {
-      throw new Error('Question not found.')
-    }
-
     return {
       answers,
     }
