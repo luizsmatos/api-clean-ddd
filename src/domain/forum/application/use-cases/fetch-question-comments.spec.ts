@@ -1,8 +1,7 @@
-import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
-import { makeQuestionComment } from 'test/factories/make-question-comment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-
-import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-question-comments'
+import { makeQuestionComment } from 'test/factories/make-question-comment'
 
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: FetchQuestionCommentsUseCase
@@ -11,25 +10,30 @@ describe('Fetch Question Comments', () => {
   beforeEach(() => {
     inMemoryQuestionCommentsRepository =
       new InMemoryQuestionCommentsRepository()
-
     sut = new FetchQuestionCommentsUseCase(inMemoryQuestionCommentsRepository)
   })
 
   it('should be able to fetch question comments', async () => {
     await inMemoryQuestionCommentsRepository.create(
-      makeQuestionComment({ questionId: new UniqueEntityID('question-2') }),
+      makeQuestionComment({
+        questionId: new UniqueEntityID('question-1'),
+      }),
     )
 
-    console.log(inMemoryQuestionCommentsRepository.items[0].questionId)
     await inMemoryQuestionCommentsRepository.create(
-      makeQuestionComment({ questionId: new UniqueEntityID('question-2') }),
+      makeQuestionComment({
+        questionId: new UniqueEntityID('question-1'),
+      }),
     )
+
     await inMemoryQuestionCommentsRepository.create(
-      makeQuestionComment({ questionId: new UniqueEntityID('question-2') }),
+      makeQuestionComment({
+        questionId: new UniqueEntityID('question-1'),
+      }),
     )
 
     const { questionComments } = await sut.execute({
-      questionId: 'question-2',
+      questionId: 'question-1',
       page: 1,
     })
 
@@ -37,14 +41,16 @@ describe('Fetch Question Comments', () => {
   })
 
   it('should be able to fetch paginated question comments', async () => {
-    for (let i = 1; i <= 22; i += 1) {
+    for (let i = 1; i <= 22; i++) {
       await inMemoryQuestionCommentsRepository.create(
-        makeQuestionComment({ questionId: new UniqueEntityID('question-2') }),
+        makeQuestionComment({
+          questionId: new UniqueEntityID('question-1'),
+        }),
       )
     }
 
     const { questionComments } = await sut.execute({
-      questionId: 'question-2',
+      questionId: 'question-1',
       page: 2,
     })
 
