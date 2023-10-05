@@ -27,7 +27,7 @@ class CustomAggregate extends AggregateRoot<null> {
   }
 }
 
-describe.only('domain events', () => {
+describe('domain events', () => {
   it('should be able to dispatch and listen to events', () => {
     const callbackSpy = vi.fn()
 
