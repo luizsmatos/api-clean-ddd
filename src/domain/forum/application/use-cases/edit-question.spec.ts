@@ -4,7 +4,7 @@ import { makeQuestion } from 'test/factories/make-question'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 import { EditQuestionUseCase } from './edit-question'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository

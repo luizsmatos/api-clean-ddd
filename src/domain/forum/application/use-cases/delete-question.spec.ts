@@ -5,7 +5,7 @@ import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 import { DeleteQuestionUseCase } from './delete-question'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository

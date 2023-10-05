@@ -2,10 +2,10 @@ import { Either, left, right } from '@/core/either'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repository'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 import { QuestionAttachmentsRepository } from '../repositories/question-attachments-repository'
 import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list'
-import { NotAllowedError } from './errors/not-allowed-error'
+import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
 
 interface EditQuestionUseCaseRequest {
