@@ -7,7 +7,7 @@ import { FetchAnswerCommentsUseCase } from './fetch-answer-comments'
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository
 let sut: FetchAnswerCommentsUseCase
 
-describe.skip('Fetch Answer Comments', () => {
+describe('Fetch Answer Comments', () => {
   beforeEach(() => {
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository()
 
@@ -32,7 +32,7 @@ describe.skip('Fetch Answer Comments', () => {
     })
 
     expect(result.isRight()).toBeTruthy()
-    expect(result.value).toHaveLength(3)
+    expect(result.value?.answerComments).toHaveLength(3)
   })
 
   it('should be able to fetch paginated answer comments', async () => {
